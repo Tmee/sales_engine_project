@@ -6,10 +6,10 @@ class Merchant
 
 
   def initialize(data)
-    :id         => row[:id],
-    :name       => row[:name],
-    :created_at => row[:created_at],
-    :updated_at => row[:updated_at])
+    @id         = data[:id]
+    @name       = data[:name]
+    @created_at = data[:created_at]
+    @updated_at = data[:updated_at]
   end
 
 

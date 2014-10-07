@@ -2,11 +2,12 @@
 module Repository
 
   def all(filename)
-    @all ||=
+    @all ||= data_builder
   end
 
   def random
     @all.sample
+
   end
 
   def find_by_x(match)
