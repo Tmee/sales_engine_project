@@ -7,9 +7,9 @@ class MerchantRepository
   include Repository
 
   attr_reader :filename,
-  :engine,
-  :read_csv, #fix later
-  :all
+              :engine,
+              :read_csv,
+              :all
 
   def initialize(engine, filename = '../data/merchants.csv')
     @filename = filename
