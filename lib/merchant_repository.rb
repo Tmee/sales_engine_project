@@ -1,7 +1,7 @@
 require 'pry'
 require 'csv'
 require_relative 'merchant'
-require './lib/method_helper'
+require './lib/repository_helper'
 
 class MerchantRepository
   include Repository
@@ -31,10 +31,6 @@ class MerchantRepository
   end
 
 
-  # def random
-  #   @all.sample
-  # end
-  #
   # def find_by_x(match)
   # end
   #
