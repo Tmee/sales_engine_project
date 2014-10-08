@@ -34,9 +34,9 @@ class MerchantRepository
     end
   end
 
-  def find_by(attribute, match)
-    all.find do |merchant|
-      merchant.collect(attribute.to_sym).downcase.strip == match.downcase.strip
+  def find_all_by(attribute, match)
+    all.collect do |merchant|
+      merchant.send(attribute.to_sym).downcase.strip == match.downcase.strip
     end
   end
 
