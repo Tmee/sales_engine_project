@@ -7,25 +7,24 @@ class MerchantRepository
   include Repository
 
   attr_reader :filename,
-              :engine
-              :data_to_array
+  :engine,
+  :data_to_array,
+  :all
 
-  def initialize(filename = '../data/merchants.csv', engine)
+  def initialize(engine, filename = '../data/merchants.csv')
     @filename = filename
+    @all    ||= build_merchant
     @engine   = engine
   end
 
   def read_csv
-   @data_to_array = CSV.read(filename, headers: true, header_converters: :symbol)
- end
-
-  def build_merchant
-   @data_to_array.collect {|data| Merchant.new(data, engine)}
+    CSV.read(filename, headers: true, header_converters: :symbol)
   end
 
-  def all(filename)
-    @all ||= build_merchant
+  def build_merchant # possibly change to plural
+    read_csv.collect {|data| Merchant.new(data, self)}
   end
+
 
   # def random
   #   @all.sample
