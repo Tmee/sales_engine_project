@@ -8,7 +8,7 @@ class MerchantRepository
 
   attr_reader :filename,
   :engine,
-  :data_to_array,
+  :read_csv, #fix later
   :all
 
   def initialize(engine, filename = '../data/merchants.csv')

@@ -21,12 +21,6 @@ class MerchantRepositoryTest < Minitest::Test
     merchant = merchant_repo.all.first
     assert merchant.is_a?(Merchant)
     assert_equal "Schroeder-Jerde", merchant.name
-    # data = [
-    # { id: "1", name: "Schroeder-Jerde", created_at: "2012-03-27 14:53:59 UTC", updated_at: "2012-03-27 14:53:59 UTC" },
-    # { id: "2", name: "Klein, Rempel and Jones", created_at: "2012-03-27 14:53:59 UTC", updated_at: "2012-03-27 14:53:59 UTC" },
-    # { id: "3", name: "Willms and Sons", created_at: "2012-03-27 14:53:59 UTC", updated_at: "2012-03-27 14:53:59 UTC" }
-    # ].map { |row| Merchant.new(row) }
-    # assert_equal data, Merchant.new(data)
   end
 
   def test_return_random
