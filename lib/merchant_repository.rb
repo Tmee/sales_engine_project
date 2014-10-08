@@ -17,10 +17,10 @@ class MerchantRepository
 
   def read_csv
    @data_to_array = CSV.read(filename, headers: true, header_converters: :symbol)
- end
+  end
 
   def build_merchant
-   @data_to_array.collect {|data| Merchant.new(data, engine)}
+   read_csv.collect {|data| Merchant.new(data, engine)}
   end
 
   def all(filename)
