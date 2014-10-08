@@ -15,5 +15,11 @@ class Merchant
     @repository = repository
   end
 
+  def items
+  end
+
+  def invoices
+  end
+
 
 end

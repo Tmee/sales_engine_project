@@ -1,17 +1,25 @@
 class Item
+    attr_reader :id,
+                :name,
+                :description,
+                :unit_price,
+                :merchant_id,
+                :created_at,
+                :updated_at
 
-  def initialize
-
+  def initialize(data)
+    @id          = data[:id]
+    @name        = data[:name]
+    @description = data[:description]
+    @unit_price  = data[:unit_price]
+    @merchant_id = data[:merchant_id]
+    @created_at  = data[:created_at]
+    @updated_at  = data[:updated_at]
   end
 
-  def build_attendee(row)
-  Attendee.new(:id           => row[:id],
-               :name         => row[:name],
-               :description  => row[:description],
-               :unit_price   => row[:unit_price],
-               :merchant_id  => row[:merchant_id],
-               :created_at   => row[:created_at],
-               :updated_at   => row[:updated_at])
+  def invoice_items
   end
 
+  def merchant
+  end
 end
