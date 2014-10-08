@@ -18,16 +18,13 @@ class MerchantRepository
   end
 
   def read_csv
-<<<<<<< HEAD
    @data_to_array = CSV.read(filename, headers: true, header_converters: :symbol)
   end
 
   def build_merchant
    read_csv.collect {|data| Merchant.new(data, engine)}
-=======
     CSV.read(filename, headers: true, header_converters: :symbol)
->>>>>>> 06e458494a749c5cc8e73628d7600258c51e1ed7
-  end
+   end
 
   def build_merchant # possibly change to plural
     read_csv.collect {|data| Merchant.new(data, self)}
