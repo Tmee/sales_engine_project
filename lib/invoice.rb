@@ -1,16 +1,11 @@
 class Invoice
 
-  def initialize
-
+  def initialize(data)
+    @id          = data[:id]
+    @customer_id = data[:customer_id]
+    @merchant_id = data[:merchant_id]
+    @status      = data[:status]
+    @created_at  = data[:created_at]
+    @updated_at  = data[:updated_at]
   end
-
-  def build_attendee(row)
-  Attendee.new(:id          => row[:id],
-               :customer_id => row[:customer_id],
-               :merchant_id => row[:merchant_id],
-               :status      => row[:status],
-               :created_at  => row[:created_at],
-               :updated_at  => row[:updated_at])
-  end
-
 end

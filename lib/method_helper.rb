@@ -1,4 +1,3 @@
-
 module Repository
 
   def all(filename)
