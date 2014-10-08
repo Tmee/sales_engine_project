@@ -21,7 +21,11 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal 'Adams-Kovacek', last_merchant.name
   end
 
-  def test
+  def test_find_by
+
+  end
+
+  def test_find_by_all
 
   end
 

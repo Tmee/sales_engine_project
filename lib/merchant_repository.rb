@@ -25,14 +25,23 @@ class MerchantRepository
   end
 
   def build_merchant
-   read_csv.collect {|data| Merchant.new(data)}
+   read_csv.collect {|data| Merchant.new(data, self)}
   end
 
-
-  def find_by(attribute, criteria)
+  def find_by(attribute, match)
     all.find do |merchant|
-      merchant.send(attribute.to_sym).downcase.strip == criteria.downcase.strip
+      merchant.send(attribute.to_sym).downcase.strip == match.downcase.strip
     end
+  end
+
+  def find_by(attribute, match)
+    all.find do |merchant|
+      merchant.collect(attribute.to_sym).downcase.strip == match.downcase.strip
+    end
+  end
+
+  def random
+    @all.sample
   end
 
   # #META PROGRAMMING CRAZINESS
@@ -42,13 +51,6 @@ class MerchantRepository
   #   end
   # end
 
-
-  # def random
-  #   @all.sample
-  # end
-  #
-  # def find_by_x(match)
-  # end
   #
   # def find_all_by_x(match)
   # end
