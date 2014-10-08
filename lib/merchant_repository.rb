@@ -29,9 +29,21 @@ class MerchantRepository
     @all.sample
   end
 
-  # def find_by_id
-  #   engine.
-  # end
+  def find_items_by_id(id)
+    engine.find_items_by_merchant_id(id)
+  end
+
+  def find_by_name(name)
+    find_by(:name, name)
+  end
+
+  def find_by(attribute, value)
+    all.find { |m| m.send(attribute) == value }
+  end
+
+  def find_by_id(id)
+    find_by(:id, id)
+  end
 
 
 

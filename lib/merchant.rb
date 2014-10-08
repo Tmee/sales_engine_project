@@ -7,7 +7,6 @@ class Merchant
 
 
   def initialize(data, repository)
-
     @id         = data[:id]
     @name       = data[:name]
     @created_at = data[:created_at]
@@ -16,10 +15,9 @@ class Merchant
   end
 
   def items
+    repository.find_items_by_id(id)
   end
 
   def invoices
   end
-
-
 end

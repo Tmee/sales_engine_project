@@ -9,7 +9,7 @@ class MerchantRepositoryTest < Minitest::Test
               :engine
 
   def setup
-    @engine = []
+    @engine = Minitest::Mock.new
     @merchant_repo = MerchantRepository.new(engine, './test/fixtures/merchants.csv')
   end
 
@@ -22,9 +22,8 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_delegates_items_to_sales_engine
-    skip
-    engine.expect(:find_items_from_merchant,[],['1'])
-    merchant_repo.find_items_from('1')
+    engine.expect(:find_items_by_merchant_id,[],['1'])
+    merchant_repo.find_items_by_id('1')
     engine.verify
   end
 
@@ -35,7 +34,22 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal  '1', merchant.id
   end
 
-  def
+  def test_it_returns_one_merchant_by_name
+    merchant = merchant_repo.find_by_name("Bernhard-Johns")
+    assert_equal "7", merchant.id
+  end
+
+  def test_it_does_not_find_nonexistant_merchant
+    merchant = merchant_repo.find_by_name("Rachel")
+    assert_equal nil, merchant
+  end
+
+  def test_it_returns_merchant_by_id
+    merchant = merchant_repo.find_by_id("1")
+    assert_equal "Schroeder-Jerde", merchant.name
+  end
+
+
 
 
 

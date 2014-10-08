@@ -1,12 +1,12 @@
-require 'pry'
-require 'csv'
 require_relative 'item'
 require './lib/repository'
 
 
 class ItemRepository
   include Repository
-
+  attr_reader :parse,
+              :engine,
+              :data
 
   def initialize(engine, filename = '../data/items.csv')
     @filename = filename
@@ -24,6 +24,10 @@ class ItemRepository
 
   def random
     @all.sample
+  end
+
+  def find_by_merchant_id(id)
+    all.select{ |i| i.merchant_id == id }
   end
 
  end
