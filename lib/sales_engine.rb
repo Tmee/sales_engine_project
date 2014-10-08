@@ -20,4 +20,8 @@ class SalesEngine
     @customer_repository     = CustomerRepository.new(nil)
     @transaction_repository  = TransactionRepository.new(nil)
   end
+
+  def find_items_by_merchant_id(id)
+    item_repository.find_by_merchant(id)
+  end
 end
