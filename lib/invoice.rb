@@ -23,4 +23,5 @@ class Invoice
 
   def merchant
   end
+
 end
