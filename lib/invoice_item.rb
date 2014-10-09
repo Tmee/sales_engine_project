@@ -26,4 +26,6 @@ class InvoiceItem
   def item
     repository.find_item_by_invoice_id(invoice_id)
   end
+
 end
+

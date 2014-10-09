@@ -2,6 +2,8 @@ require 'pry'
 require 'csv'
 require_relative 'merchant'
 
+class MerchantRepository
+
 # require './lib/repository'
 #require './lib/repository'
 
@@ -9,9 +11,9 @@ class MerchantRepository
 #  include Repository
 
   attr_reader :filename,
-  :engine,
-  :read_csv,
-  :all
+              :engine,
+              :read_csv,
+              :all
 
   def initialize(engine, filename = '../data/merchants.csv')
     @filename = filename
