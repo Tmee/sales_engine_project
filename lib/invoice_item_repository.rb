@@ -30,6 +30,9 @@ class InvoiceItemRepository
     @all.sample
   end
 
+  def find_invoice_items_by_id(id)
+    all.find {|invoice_item| invoice_item.id == match }
+  end
 
 
 

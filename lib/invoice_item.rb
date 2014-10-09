@@ -15,4 +15,5 @@ class InvoiceItem
 
   def item
   end
+
 end

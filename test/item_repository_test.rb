@@ -10,7 +10,7 @@ class ItemRepositoryTest < Minitest::Test
 
 
   def setup
-    @engine = Minitest::Mock.new
+    @engine    = Minitest::Mock.new
     @item_repo = ItemRepository.new(engine, './test/fixtures/items.csv')
   end
 
@@ -28,7 +28,4 @@ class ItemRepositoryTest < Minitest::Test
     item_repo.find_merchant_by_id('1')
     engine.verify
   end
-
-
-
 end
