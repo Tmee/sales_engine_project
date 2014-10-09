@@ -29,3 +29,13 @@ class InvoiceRepository
   def random
     @all.sample
   end
+
+  def find_by_merchant_id(id)
+    all.select{ |i| i.merchant_id == id }
+  end
+
+  def find_by_invoice_id(id)
+    all.select{ |i| i.id == id }
+  end
+
+end

@@ -38,3 +38,5 @@ class MerchantTest < Minitest::Test
     repository.verify
   end
 end
+
+end

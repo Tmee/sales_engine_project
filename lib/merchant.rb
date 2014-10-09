@@ -19,5 +19,6 @@ class Merchant
   end
 
   def invoices
+    repository.find_invoices_by_id(id)
   end
 end
