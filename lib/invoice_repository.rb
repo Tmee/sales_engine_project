@@ -1,11 +1,10 @@
 require 'pry'
 require 'csv'
-require_relative 'item'
-require './lib/invoice'
+require_relative 'invoice'
 
 
 class InvoiceRepository
-  include Repository
+#  include Repository
     attr_reader :filename,
                 :engine,
                 :all,
@@ -16,6 +15,10 @@ class InvoiceRepository
     @filename = filename
     @engine   = engine
     @all    ||= build_invoice
+  end
+
+  def inspect
+    "#<#{self.class} #{@all.size} rows>"
   end
 
   def read_csv

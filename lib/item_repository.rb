@@ -1,6 +1,6 @@
 require 'pry'
 require 'csv'
-require_relative 'item_'
+require_relative 'item'
 # require './lib/repository'
 
 class ItemRepository
@@ -14,6 +14,10 @@ class ItemRepository
     @filename = filename
     @engine   = engine
     @all    ||= build_items
+  end
+
+  def inspect
+    "#<#{self.class} #{@all.size} rows>"
   end
 
   def read_csv

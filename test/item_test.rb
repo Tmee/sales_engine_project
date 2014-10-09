@@ -1,7 +1,7 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/item_'
+require_relative '../lib/item'
 
 class ItemTest < Minitest::Test
   attr_reader :repository,

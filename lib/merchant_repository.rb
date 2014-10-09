@@ -2,10 +2,6 @@ require 'pry'
 require 'csv'
 require_relative 'merchant'
 
-class MerchantRepository
-
-# require './lib/repository'
-#require './lib/repository'
 
 class MerchantRepository
 #  include Repository
@@ -19,6 +15,10 @@ class MerchantRepository
     @filename = filename
     @all    ||= build_merchants
     @engine   = engine
+  end
+
+  def inspect
+    "#<#{self.class} #{@all.size} rows>"
   end
 
   def read_csv

@@ -1,4 +1,4 @@
-require_relative 'require_helper'
+#require_relative 'require_helper'
 
 
 class SalesEngine
@@ -9,16 +9,17 @@ class SalesEngine
               :customer_repository,
               :transaction_repository
 
-  def initialize
+  def initialize(data = "./data")
+    @data = data
   end
 
   def startup
-    @merchant_repository     = MerchantRepository.new(nil)
-    @invoice_repository      = InvoiceRepository.new(nil)
-    @item_repository         = ItemRepository.new(nil)
-    @invoice_item_repository = InvoiceItemRepository.new(nil)
-    @customer_repository     = CustomerRepository.new(nil)
-    @transaction_repository  = TransactionRepository.new(nil)
+    @merchant_repository     = MerchantRepository.new(nil, self)
+    @invoice_repository      = InvoiceRepository.new(nil, self)
+    @item_repository         = ItemRepository.new(nil, self)
+    @invoice_item_repository = InvoiceItemRepository.new(nil, self)
+    @customer_repository     = CustomerRepository.new(nil, self)
+    @transaction_repository  = TransactionRepository.new(nil, self)
   end
 
   def find_items_by_merchant_id(id)

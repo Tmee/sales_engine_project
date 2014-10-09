@@ -14,6 +14,10 @@ class CustomerRepository
     @all    ||= build_customers
   end
 
+  def inspect
+    "#<#{self.class} #{@all.size} rows>"
+  end
+
   def read_csv
     CSV.read(filename, headers: true, header_converters: :symbol)
   end
@@ -100,4 +104,3 @@ class CustomerRepository
     find_all_by(:updated_at, match)
   end
  end
-

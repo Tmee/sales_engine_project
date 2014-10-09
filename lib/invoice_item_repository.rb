@@ -17,6 +17,10 @@ class InvoiceItemRepository
     @engine   = engine
   end
 
+  def inspect
+    "#<#{self.class} #{@all.size} rows>"
+  end
+
   def read_csv
     CSV.read(filename, headers: true, header_converters: :symbol)
   end
