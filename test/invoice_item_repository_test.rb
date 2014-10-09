@@ -49,9 +49,9 @@ class InvoiceItemRepositoryTest < Minitest::Test
     assert_equal "2", invoice_item.invoice_id
   end
 
-  def test_return_random
-    skip
-    assert
-  end
+  # def test_return_random
+  #   skip
+  #   assert
+  # end
 
 end
