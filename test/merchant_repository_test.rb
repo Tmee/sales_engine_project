@@ -48,4 +48,10 @@ class MerchantRepositoryTest < Minitest::Test
     merchant = merchant_repo.find_by_id("1")
     assert_equal "Schroeder-Jerde", merchant.name
   end
+
+  def test_return_random
+    skip
+    assert
+  end
+
 end
