@@ -29,3 +29,8 @@ class InvoiceItemRepository
   def random
     @all.sample
   end
+
+
+
+
+end

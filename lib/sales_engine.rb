@@ -1,4 +1,4 @@
-require_relative 'require_helper'
+rrequire_relative 'require_helper'
 
 
 class SalesEngine
@@ -13,9 +13,9 @@ class SalesEngine
   end
 
   def startup
-    @merchant_repository     = MerchantRepository.new(nil)
-    @invoice_repository      = InvoiceRepository.new(nil)
-    @item_repository         = ItemRepository.new(nil)
+    @merchant_repository = MerchantRepository.new(nil)
+    @invoice_repository  = InvoiceRepository.new(nil)
+    @item_repository     = ItemRepository.new(nil)
     @invoice_item_repository = InvoiceItemRepository.new(nil)
     @customer_repository     = CustomerRepository.new(nil)
     @transaction_repository  = TransactionRepository.new(nil)

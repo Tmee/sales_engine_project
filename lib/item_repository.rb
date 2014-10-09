@@ -1,3 +1,4 @@
+RawBlameHistory
 require_relative 'item'
 require './lib/repository'
 

@@ -1,7 +1,7 @@
 require 'pry'
 require 'csv'
 require_relative 'merchant'
-require './lib/repository'
+# require './lib/repository'
 
 class MerchantRepository
   include Repository
@@ -27,6 +27,10 @@ class MerchantRepository
 
   def random
     @all.sample
+  end
+
+  def find_merchant_by_id(id)
+     all.select{ |i| i.merchant_id == id }
   end
 
   def find_items_by_id(id)
