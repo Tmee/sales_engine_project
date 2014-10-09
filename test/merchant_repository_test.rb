@@ -49,10 +49,6 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal "Schroeder-Jerde", merchant.name
   end
 
-
-
-
-
   def test_return_random
     skip
     assert

@@ -8,18 +8,11 @@ class MerchantTest < Minitest::Test
   attr_reader :merchant,
               :repository
 
-  # class FakeMerchantRepository
-  #   def find_items_by_id(id)
-  #     :id
-  #   end
-  # end
-
   def setup
     attribute  = { id: "1",
                    name: "Example",
                    created_at: "2012-03-27 14:53:00 UTC",
                    updated_at: "2012-03-27 14:53:59 UTC" }
-    # @repository = FakeMerchantRepository.new
     @repository = Minitest::Mock.new
     @merchant   = Merchant.new(attribute, repository)
   end
