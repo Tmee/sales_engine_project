@@ -2,9 +2,7 @@ require 'pry'
 require 'csv'
 require_relative 'merchant'
 
-
 class MerchantRepository
-#  include Repository
 
   attr_reader :filename,
               :engine,
@@ -33,9 +31,14 @@ class MerchantRepository
     @all.sample
   end
 
+  #the following code will be called from the engine when asked
+
   def find_merchant_by_id(id)
      all.select{ |i| i.merchant_id == id }
   end
+
+  #the following two methods allow merchant_repository to talk to sales engine
+  #they are called in merchant.rb (one step down on tree)
 
   def find_items_by_id(id)
     engine.find_items_by_merchant_id(id)
@@ -45,22 +48,49 @@ class MerchantRepository
     engine.find_invoices_by_merchant_id(id)
   end
 
-  def find_by(attribute, value)
-    all.find { |m| m.send(attribute) == value }
+  #find_by
+
+  def find_by(attribute, match)
+    all.find { |m| m.send(attribute) == match }
+  end
+
+  def find_all_by(attribute, match)
+    all.select { |i| i.send(attribute) == match }
+  end
+
+  #find_by methods for a single case
+
+  def find_by_id(id)
+    find_by(:id, id)
   end
 
   def find_by_name(name)
     find_by(:name, name)
   end
 
-  def find_by_id(id)
-    find_by(:id, id)
+  def find_by_created_at(created_at)
+    find_by(:created_at, created_at)
   end
 
-  #
-  # def find_by_x(match)
-  # end
-  #
-  # def find_all_by_x(match)
-  # end
+  def find_by_updated_at(updated_at)
+    find_by(:updated_at, updated_at)
+  end
+
+  #find_by methods for all cases
+
+  def find_all_by_id(id)
+    find_all_by(:id, id)
+  end
+
+  def find_all_by_name(name)
+    find_all_by(:name, name)
+  end
+
+  def find_all_by_created_at(created_at)
+    find_all_by(:created_at, created_at)
+  end
+
+  def find_all_by_updated_at(updated_at)
+    find_all_by(:updated_at, updated_at)
+  end
 end

@@ -3,15 +3,16 @@ require 'csv'
 require_relative 'customer'
 
 class CustomerRepository
+
   attr_reader :filename,
               :engine,
-              :all,
-              :read_csv
+              :read_csv,
+              :all
 
   def initialize(engine, filename = '../data/customers.csv')
     @filename = filename
-    @engine   = engine
     @all    ||= build_customers
+    @engine   = engine
   end
 
   def inspect
@@ -30,11 +31,14 @@ class CustomerRepository
     @all.sample
   end
 
+  #the following method allows customer_repository to talk to sales engine
+  #it is called in customer.rb (one step down on tree)
+
   def find_invoice_by_customer_id(id)
     engine.find_invoice_by_customer_id(id)
   end
 
-  #define find_by's
+  #find_by
 
   def find_by(attribute, match)
     all.find { |i| i.send(attribute) == match }
@@ -46,61 +50,45 @@ class CustomerRepository
 
   #find by methods for a single case
 
-  def find_by_id(match)
-    find_by(:id, match)
+  def find_by_id(id)
+    find_by(:id, id)
   end
 
-  def find_by_first_name(match)
-    find_by(:first_name, match)
+  def find_by_first_name(first_name)
+    find_by(:first_name, first_name)
   end
 
-  def find_by_last_name(match)
-    find_by(:last_name, match)
+  def find_by_last_name(last_name)
+    find_by(:last_name, last_name)
   end
 
-  def find_by_unit_price(match)
-    find_by(:unit_price, match)
+  def find_by_created_at(created_at)
+    find_by(:created_at, created_at)
   end
 
-  def find_by_merchant_id(match)
-    find_by(:merchant_id, match)
-  end
-
-  def find_by_created_at(match)
-    find_by(:created_at, match)
-  end
-
-  def find_by_updated_at(match)
-    find_by(:updated_at, match)
+  def find_by_updated_at(updated_at)
+    find_by(:updated_at, updated_at)
   end
 
   #find by methods for all cases
 
-  def find_all_by_id(match)
-    find_all_by(:id, match)
+  def find_all_by_id(id)
+    find_all_by(:id, id)
   end
 
-  def find_all_by_first_name(match)
-    find_by(:first_name, match)
+  def find_all_by_first_name(first_name)
+    find_by(:first_name, first_name)
   end
 
-  def find_all_by_last_name(match)
-    find_by(:last_name, match)
+  def find_all_by_last_name(last_name)
+    find_by(:last_name, last_name)
   end
 
-  def find_all_by_unit_price(match)
-    find_all_by(:unit_price, match)
+  def find_all_by_created_at(created_at)
+    find_all_by(:created_at, created_at)
   end
 
-  def find_all_by_merchant_id(match)
-    find_all_by(:merchant_id, match)
-  end
-
-  def find_all_by_created_at(match)
-    find_all_by(:created_at, match)
-  end
-
-  def find_all_by_updated_at(match)
-    find_all_by(:updated_at, match)
+  def find_all_by_updated_at(updated_at)
+    find_all_by(:updated_at, updated_at)
   end
  end

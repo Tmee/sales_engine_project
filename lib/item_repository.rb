@@ -1,19 +1,18 @@
 require 'pry'
 require 'csv'
 require_relative 'item'
-# require './lib/repository'
 
 class ItemRepository
-  # include Repository
-  attr_reader :parse,
+
+  attr_reader :filename,
               :engine,
-              :data,
-              :filename
+              :read_csv,
+              :all
 
   def initialize(engine, filename = '../data/items.csv')
     @filename = filename
-    @engine   = engine
     @all    ||= build_items
+    @engine   = engine
   end
 
   def inspect
@@ -38,7 +37,6 @@ class ItemRepository
     all.select{ |i| i.merchant_id == id }
   end
 
-
   #the following two methods allow item_repository to talk to sales engine
   #they are called in item.rb (one step down on tree)
 
@@ -50,65 +48,73 @@ class ItemRepository
     engine.find_merchant_by_id(id)
   end
 
-  #define find_by's
+  #find_by
 
   def find_by(attribute, match)
-    all.find { |m| m.send(attribute) == value }
+    all.find { |m| m.send(attribute) == match }
   end
 
   def find_all_by(attribute, match)
-    all.select { |i| i.send(attribute) == value }
+    all.select { |i| i.send(attribute) == match }
   end
 
-  #find by methods for a single case
+  #find_by methods for a single case
 
-  def find_by_id(match)
-    find_by(:id, match)
+  def find_by_id(id)
+    find_by(:id, id)
   end
 
-  def find_by_name(match)
-    find_by(:name, match)
+  def find_by_name(name)
+    find_by(:name, name)
   end
 
-  def find_by_unit_price(match)
-    find_by(:unit_price, match)
+  def find_by_description(description)
+    find_by(:description, description)
   end
 
-  def find_by_merchant_id(match)
-    find_by(:merchant_id, match)
+  def find_by_unit_price(unit_price)
+    find_by(:unit_price, unit_price)
   end
 
-  def find_by_created_at(match)
-    find_by(:created_at, match)
+  def find_by_merchant_id(merchant_id)
+    find_by(:merchant_id, merchant_id)
   end
 
-  def find_by_updated_at(match)
-    find_by(:updated_at, match)
+  def find_by_created_at(created_at)
+    find_by(:created_at, created_at)
   end
 
-  #find by methods for all cases
-
-  def find_all_by_id(match)
-    find_all_by(:id, match)
+  def find_by_updated_at(updated_at)
+    find_by(:updated_at, updated_at)
   end
 
-  def find_all_by_name(match)
-    find_all_by(:name, match)
+  #find_by methods for all cases
+
+  def find_all_by_id(id)
+    find_all_by(:id, id)
   end
 
-  def find_all_by_unit_price(match)
-    find_all_by(:unit_price, match)
+  def find_all_by_name(name)
+    find_all_by(:name, name)
   end
 
-  def find_all_by_merchant_id(match)
-    find_all_by(:merchant_id, match)
+  def find_all_by_description(description)
+    find_all_by(:description, description)
   end
 
-  def find_all_by_created_at(match)
-    find_all_by(:created_at, match)
+  def find_all_by_unit_price(unit_price)
+    find_all_by(:unit_price, unit_price)
   end
 
-  def find_all_by_updated_at(match)
+  def find_all_by_merchant_id(merchant_id)
+    find_all_by(:merchant_id, merchant_id)
+  end
+
+  def find_all_by_created_at(created_at)
+    find_all_by(:created_at, created_at)
+  end
+
+  def find_all_by_updated_at(updated_at)
     find_all_by(:updated_at, match)
   end
  end

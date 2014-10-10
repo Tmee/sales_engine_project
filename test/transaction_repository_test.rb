@@ -49,9 +49,9 @@ class TransactionRepositoryTest < Minitest::Test
     assert_equal "7", transaction.invoice_id
   end
 
-  def test_return_random
-    skip
-    assert
-  end
+  # def test_return_random
+  #   skip
+  #   assert
+  # end
 
 end
