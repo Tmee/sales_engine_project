@@ -1,5 +1,4 @@
-#require_relative 'require_helper'
-
+require_relative 'require_helper'
 
 class SalesEngine
   attr_reader :merchant_repository,
@@ -7,19 +6,20 @@ class SalesEngine
               :item_repository,
               :invoice_item_repository,
               :customer_repository,
-              :transaction_repository
+              :transaction_repository,
+              :data
 
-  def initialize(data = "./data")
+  def initialize(data = "./csvs")
     @data = data
   end
 
   def startup
-    @merchant_repository     = MerchantRepository.new(nil, self)
-    @invoice_repository      = InvoiceRepository.new(nil, self)
-    @item_repository         = ItemRepository.new(nil, self)
-    @invoice_item_repository = InvoiceItemRepository.new(nil, self)
-    @customer_repository     = CustomerRepository.new(nil, self)
-    @transaction_repository  = TransactionRepository.new(nil, self)
+    @merchant_repository     = MerchantRepository.new(self, './csvs/merchants.csv')
+    @invoice_repository      = InvoiceRepository.new(self, './csvs/invoices.csv')
+    @item_repository         = ItemRepository.new(self, './csvs/items.csv')
+    @invoice_item_repository = InvoiceItemRepository.new(self, './csvs/invoice_items.csv')
+    @customer_repository     = CustomerRepository.new(self, './csvs/customers.csv')
+    @transaction_repository  = TransactionRepository.new(self, './csvs/transactions.csv')
   end
 
   def find_items_by_merchant_id(id)

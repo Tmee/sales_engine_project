@@ -9,10 +9,10 @@ class MerchantRepository
               :read_csv,
               :all
 
-  def initialize(engine, filename = '../data/merchants.csv')
-    @filename = filename
-    @all    ||= build_merchants
-    @engine   = engine
+  def initialize(engine, filename)
+    @filename   = filename
+    @all      ||= build_merchants
+    @engine     = engine
   end
 
   def inspect
