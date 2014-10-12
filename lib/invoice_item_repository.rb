@@ -33,9 +33,9 @@ class InvoiceItemRepository
 
   #the following code will be called from the engine when asked
 
-  def find_invoice_items_by_id(id)
-    all.find {|invoice_item| invoice_item.id == match }
-  end
+  # def find_invoice_items_by_id(id)
+  #   engine.find_invoice_items_by_id(id)
+  # end
 
   #the following two methods allow invoice_item_repository to talk to sales engine
   #they are called in invoice_item.rb (one step down on tree)
@@ -44,8 +44,8 @@ class InvoiceItemRepository
     engine.find_invoice_by_invoice_id(invoice_id)
   end
 
-  def find_item_by_invoice_id(invoice_id)
-    engine.find_items_by_invoice_id(invoice_id)
+  def find_item_by_item_id(item_id)
+    engine.find_item_by_item_id(item_id)
   end
 
   #find_by

@@ -33,9 +33,7 @@ class ItemRepository
 
   #the following code will be called from the engine when asked
 
-  def find_by_merchant_id(id)
-    all.select{ |i| i.merchant_id == id }
-  end
+
 
   #the following two methods allow item_repository to talk to sales engine
   #they are called in item.rb (one step down on tree)
@@ -44,8 +42,8 @@ class ItemRepository
     engine.find_invoice_items_by_id(id)
   end
 
-  def find_merchant_by_id(id)
-    engine.find_merchant_by_id(id)
+  def find_merchant_by_merchant_id(id)
+     engine.find_by_merchant_id(id)
   end
 
   #find_by

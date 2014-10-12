@@ -34,7 +34,7 @@ class CustomerTest < Minitest::Test
   end
 
   def test_it_delegates_items_to_repository
-    repository.expect(:find_invoice_by_customer_id, [], ["1"])
+    repository.expect(:find_invoices_by_customer_id, [], ["1"])
     customer.invoices
     repository.verify
   end

@@ -34,8 +34,8 @@ class CustomerRepository
   #the following method allows customer_repository to talk to sales engine
   #it is called in customer.rb (one step down on tree)
 
-  def find_invoice_by_customer_id(id)
-    engine.find_invoice_by_customer_id(id)
+  def find_invoices_by_customer_id(id)
+    engine.find_invoices_by_customer_id(id)
   end
 
   #find_by
@@ -77,11 +77,11 @@ class CustomerRepository
   end
 
   def find_all_by_first_name(first_name)
-    find_by(:first_name, first_name)
+    find_all_by(:first_name, first_name)
   end
 
   def find_all_by_last_name(last_name)
-    find_by(:last_name, last_name)
+    find_all_by(:last_name, last_name)
   end
 
   def find_all_by_created_at(created_at)
