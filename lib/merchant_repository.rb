@@ -33,9 +33,9 @@ class MerchantRepository
 
   #the following code will be called from the engine when asked
 
-  def find_merchant_by_id(id)
-     all.select{ |i| i.merchant_id == id }
-  end
+  # def find_merchant_by_id(id)
+  #    all.select{ |i| i.merchant_id == id }
+  # end
 
   #the following two methods allow merchant_repository to talk to sales engine
   #they are called in merchant.rb (one step down on tree)
@@ -67,6 +67,11 @@ class MerchantRepository
   def find_by_name(name)
     find_by(:name, name)
   end
+
+  def find_by_merchant_id(merchant_id)
+    find_by(:id, merchant_id)
+  end
+
 
   def find_by_created_at(created_at)
     find_by(:created_at, created_at)

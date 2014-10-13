@@ -38,8 +38,8 @@ class ItemRepository
     engine.find_invoice_items_by_id(id)
   end
 
-  def find_merchant_by_id(id)
-    engine.find_merchant_by_id(id)
+  def find_merchant_by_merchant_id(id)
+     engine.find_by_merchant_id(id)
   end
 
   #find_by

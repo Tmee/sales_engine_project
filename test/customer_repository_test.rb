@@ -23,8 +23,8 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_delegates_items_to_sales_engine
-    engine.expect(:find_invoice_by_customer_id,[],['1'])
-    customer_repo.find_invoice_by_customer_id('1')
+    engine.expect(:find_invoices_by_customer_id,[],['1'])
+    customer_repo.find_invoices_by_customer_id('1')
     engine.verify
   end
 
