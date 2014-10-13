@@ -22,12 +22,12 @@ class SalesEngine
     @transaction_repository  = TransactionRepository.new(self, './csvs/transactions.csv')
   end
 
-  def find_items_by_merchant_id(id)
-    item_repository.find_by_merchant(id)
+  def find_items_by_merchant_id(merchant_id)
+    item_repository.find_all_by_merchant_id(merchant_id)
   end
 
-  def find_invoice_items_by_id(id)
-    invoice_item_repository.find_invoice_items_by_id(id)
+  def find_invoice_items_by_id(invoice_id)
+    invoice_item_repository.find_all_by_invoice_id(invoice_id)
   end
 
   def find_merchant_by_id(id)
@@ -43,14 +43,14 @@ class SalesEngine
   end
 
   def find_invoice_by_invoice_id(id)
-    invoice_repository.find_by_invoice_id(id)
+    invoice_repository.find_by_id(id)
   end
 
-  def find_items_by_invoice_id(id)
-    item_repository.find_by_invoice_id(id)
+  def find_by_item_id(id)
+    item_repository.find_by_id(id)
   end
 
-  def find_customer_by_customer_id
+  def find_customer_by_customer_id(id)
     customer_repository.find_by_id(id)
   end
 
@@ -58,11 +58,12 @@ class SalesEngine
     transaction_repository.find_by_id(id)
   end
 
-  def find_invoice_items_by_id(id)
-    invoice_item_repository.find_by_id(id)
+  def find_items_by_id_within_invoice_items(invoice_id)
+    invoice_items = invoice_item_repository.find_all_by_invoice_id(invoice_id)
+    invoice_items.map { |ii| item_repository.find_by_id(ii.item_id) }
+
   end
 
-  def find_items_by_id_within_invoice_items(item_id)
-    invoice_item_repository.find_by_item_id(item_id)
+  def find_transactions_by_invoice_id(invoice_id) transaction_repository.find_all_by_invoice_id(invoice_id)
   end
 end

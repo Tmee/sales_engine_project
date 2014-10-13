@@ -8,9 +8,9 @@ class Invoice
               :repository
 
   def initialize(data, repository)
-    @id          = data[:id]
-    @customer_id = data[:customer_id]
-    @merchant_id = data[:merchant_id]
+    @id          = data[:id].to_i
+    @customer_id = data[:customer_id].to_i
+    @merchant_id = data[:merchant_id].to_i
     @status      = data[:status]
     @created_at  = data[:created_at]
     @updated_at  = data[:updated_at]
@@ -18,15 +18,15 @@ class Invoice
   end
 
   def transactions
-    repository.find_transactions_by_id(transation_id)
+    repository.find_transactions_by_invoice_id(id)
   end
 
   def invoice_items
-    repository.find_invoice_items_by_id(invoice_item_id)
+    repository.find_invoice_items_by_id(id)
   end
 
   def items
-    repository.find_items_by_id_within_invoice_items(item_id)
+ repository.find_items_by_id_within_invoice_items(id)
   end
 
   def customer

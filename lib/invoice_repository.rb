@@ -33,24 +33,24 @@ class InvoiceRepository
 
   #the following code will be called from the engine when asked
 
-  def find_invoice_by_invoice_id(invoice_id)
-    engine.find_invoice_by_invoice_id(invoice_id)
+  def find_invoice_by_invoice_id(id)
+    engine.find_invoice_by_invoice_id(id)
   end
 
   #the following five methods allow invoice_repository to talk to sales engine
   #they are called in invoice.rb (one step down on tree)
 
 
-  def find_transactions_by_id(transaction_id)
-    engine.find_transactions_by_id(transaction_id)
+  def find_transactions_by_invoice_id(id)
+    engine.find_transactions_by_invoice_id(id)
   end
 
-  def find_invoice_items_by_id(invoice_item_id)
-    engine.find_invoice_items_by_id(invoice_item_id)
+  def find_invoice_items_by_id(id)
+    engine.find_invoice_items_by_id(id)
   end
 
-  def find_items_by_id_within_invoice_items(item_id)
-    engine.find_items_by_id_within_instance_items(item_id)
+  def find_items_by_id_within_invoice_items(id)
+    engine.find_items_by_id_within_invoice_items(id)
   end
 
   def find_customer_by_customer_id(customer_id)

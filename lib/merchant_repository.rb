@@ -51,7 +51,7 @@ class MerchantRepository
   #find_by
 
   def find_by(attribute, match)
-    all.find { |m| m.send(attribute) == match }
+    all.find { |i| i.send(attribute) == match }
   end
 
   def find_all_by(attribute, match)
