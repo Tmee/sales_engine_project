@@ -22,6 +22,10 @@ class SalesEngine
     @transaction_repository  = TransactionRepository.new(self, './csvs/transactions.csv')
   end
 
+  def find_transactions_by_invoice_id(invoice_id)
+    transaction_repository.find_all_by_invoice_id(invoice_id)
+  end
+
   def find_items_by_merchant_id(id)
     item_repository.find_by_merchant(id)
   end

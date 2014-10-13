@@ -9,7 +9,8 @@ class Item
                 :merchant_id,
                 :created_at,
                 :updated_at,
-                :repository
+                :repository,
+                :paid_invoice_items
 
   def initialize(data, repository)
     @id          = data[:id].to_i
@@ -29,4 +30,30 @@ class Item
   def merchant
     repository.find_merchant_by_merchant_id(merchant_id)
   end
+
+  def find_paid_transactions
+    @paid_invoice_items ||= invoice_items.select { |i| repository.find_success_transactions(i.invoice_id)}
+  end
+
+  def revenue
+    @paid_invoice_items.inject(0) { |sum, i| sum += (i.unit_price * i.quantity) }
+  end
+
+  def best_day
+    daily_invoice_items = paid_invoice_items.group_by do |invoice_item|
+      invoice_item.invoice.updated_at
+    end
+    daily_invoice_items.flatten!
+    daily_item_totals = total_items_by_date(daily_invoice_items)
+    daily_item_totals.max_by { |key, value| value }[0]
+  end
+
+  def total_items_by_date(invoice_items)
+    invoice_items.each do |key, value|
+      invoice_items[key] = value.inject(0) do |sum, invoice_item|
+        sum + invoice_item.quantity
+      end
+    end
+  end
+
 end

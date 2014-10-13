@@ -31,6 +31,14 @@ class MerchantRepository
     @all.sample
   end
 
+  def most_revenue(x)
+    all.sort_by { |m| m.revenue }.reverse[0...x]
+  end
+
+  def revenue(date)
+    all.inject(0) { |sum, merchant| sum += merchant.revenue(date) }
+  end
+
   #the following code will be called from the engine when asked
 
   # def find_merchant_by_id(id)

@@ -1,3 +1,5 @@
+require 'date'
+
 class InvoiceItem
   attr_reader :id,
               :item_id,
@@ -14,8 +16,8 @@ class InvoiceItem
     @invoice_id = data[:invoice_id].to_i
     @quantity   = data[:quantity].to_i
     @unit_price = BigDecimal.new(data[:unit_price])/ BigDecimal(100)
-    @created_at = data[:created_at]
-    @updated_at = data[:updated_at]
+    @created_at = Date.parse(data[:created_at])
+    @updated_at = Date.parse(data[:updated_at])
     @repository = repository
   end
 
@@ -27,5 +29,12 @@ class InvoiceItem
     repository.find_item_by_item_id(item_id)
   end
 
+  def transactions
+    repository.find_all_by_id(invoice_id)
+  end
+
+  def successful?
+    transactions.any? {|t| t.result == 'success'}
+  end
 end
 

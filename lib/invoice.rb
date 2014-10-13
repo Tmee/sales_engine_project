@@ -19,12 +19,8 @@ class Invoice
     @repository  = repository
   end
 
-  def transactions
-    repository.find_transactions_by_id(transation_id)
-  end
-
   def invoice_items
-    repository.find_invoice_items_by_id(invoice_item_id)
+    repository.find_invoice_items_by_id(id)
   end
 
   def items
@@ -39,4 +35,17 @@ class Invoice
     repository.find_merchant_by_merchant_id(merchant_id)
   end
 
+  def transactions
+    repository.find_transactions_by_invoice_id(id)
+  end
+
+  def successful?
+    transactions.any? {|t| t.result == 'success'}
+  end
+
+  def amount
+    invoice_items.inject(0) do |result, invoice_item|
+      result + (BigDecimal(invoice_item.quantity) * invoice_item.unit_price)
+    end
+  end
 end

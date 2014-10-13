@@ -31,12 +31,23 @@ class ItemRepository
     @all.sample
   end
 
+  def most_revenue(x)
+    all.sort_by { |i| i.revenue }.reverse[0..x-1]
+  end
+
+
   #the following code will be called from the engine when asked
+
 
 
 
   #the following two methods allow item_repository to talk to sales engine
   #they are called in item.rb (one step down on tree)
+
+
+  def find_success_transactions(invoice_id)
+    engine.find_success_transactions_by_invoice_id(invoice_id)
+  end
 
   def find_invoice_items_by_id(id)
     engine.find_invoice_items_by_id(id)
