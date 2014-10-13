@@ -35,7 +35,7 @@ class ItemRepository
   #they are called in item.rb (one step down on tree)
 
   def find_invoice_items_by_id(id)
-    engine.find_invoice_items_by_id(id)
+    engine.find_invoice_items_by_item_id(id)
   end
 
   def find_merchant_by_merchant_id(id)

@@ -40,7 +40,6 @@ class InvoiceRepository
   #the following five methods allow invoice_repository to talk to sales engine
   #they are called in invoice.rb (one step down on tree)
 
-
   def find_transactions_by_invoice_id(id)
     engine.find_transactions_by_invoice_id(id)
   end
@@ -51,10 +50,6 @@ class InvoiceRepository
 
   def find_customer_by_customer_id(customer_id)
     engine.find_customer_by_customer_id(customer_id)
-  end
-
-  def find_invoice_items_by_id(invoice_item_id)
-    engine.find_invoice_items_by_id(invoice_item_id)
   end
 
   def find_items_by_id_within_invoice_items(id)
