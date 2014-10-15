@@ -31,6 +31,14 @@ class TransactionRepository
     @all.sample
   end
 
+  #the following code will be called from the engine when asked
+
+  def find_results_by_invoice_id(invoice_id)
+  #from transactions, return only invoice ids where result == success
+    invoices = find_all_by_invoice_id(invoice_id)
+    successful_invoices = invoices.select { |i| i.result == "success" }
+  end
+
   #the following two methods allow transaction_repository to talk to sales engine
   #they are called in transaction.rb (one step down on tree)
 
