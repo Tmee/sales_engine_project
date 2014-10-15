@@ -37,7 +37,8 @@ class InvoiceItemRepository
   #   engine.find_invoice_items_by_id(id)
   # end
 
-  #the following two methods allow invoice_item_repository to talk to sales engine
+  #the following two methods allow
+  # invoice_item_repository to talk to sales engine
   #they are called in invoice_item.rb (one step down on tree)
 
   def find_invoice_by_invoice_id(invoice_id)

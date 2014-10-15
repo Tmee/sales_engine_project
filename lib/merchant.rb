@@ -5,7 +5,8 @@ class Merchant
               :name,
               :created_at,
               :updated_at,
-              :repository
+              :repository,
+              :items
 
 
   def initialize(data, repository)
@@ -45,7 +46,8 @@ class Merchant
 
   def paid_invoice_items
     paid_invoices.map do |invoice|
-      repository.engine.invoice_item_repository.find_all_by_invoice_id(invoice.id)
+      repository
+        .engine.invoice_item_repository.find_all_by_invoice_id(invoice.id)
     end.flatten
   end
 

@@ -7,22 +7,44 @@ class SalesEngine
               :invoice_item_repository,
               :customer_repository,
               :transaction_repository,
-              :data
+              :d,
+              :m,
+              :ix,
+              :it,
+              :ii,
+              :c,
+              :t
+
 
   def initialize(data = "./csvs")
-    @data = data
+    @d  = data
+    @m  = "merchants"
+    @ix = "invoices"
+    @it = "items"
+    @ii = "invoice_items"
+    @c  = "customers"
+    @t  = "transactions"
   end
 
   def startup
-    @merchant_repository     = MerchantRepository.new(self, './csvs/merchants.csv')
-    @invoice_repository      = InvoiceRepository.new(self, './csvs/invoices.csv')
-    @item_repository         = ItemRepository.new(self, './csvs/items.csv')
-    @invoice_item_repository = InvoiceItemRepository.new(self, './csvs/invoice_items.csv')
-    @customer_repository     = CustomerRepository.new(self, './csvs/customers.csv')
-    @transaction_repository  = TransactionRepository.new(self, './csvs/transactions.csv')
+    @merchant_repository     = MerchantRepository.new(self, "#{d}/#{m}.csv")
+
+    @invoice_repository      = InvoiceRepository.new(self, "#{d}/#{ix}.csv")
+
+    @item_repository         = ItemRepository.new(self, "#{d}/#{it}.csv")
+
+    @invoice_item_repository = InvoiceItemRepository.new(self, "#{d}/#{ii}.csv")
+
+    @customer_repository     = CustomerRepository.new(self, "#{d}/#{c}.csv")
+
+    @transaction_repository  = TransactionRepository.new(self, "#{d}/#{t}.csv")
   end
   def find_all_by_customer_id(customer_id)
     customer_repository.find_all_by_id(customer_id)
+  end
+
+  def find_all_invoices_by_invoice_id(id)
+    invoice_repository.find_all_by_id(id)
   end
 
   def find_items_by_merchant_id(merchant_id)
@@ -95,9 +117,9 @@ class SalesEngine
   end
 
   def find_favorite_merchant(customer_id)
-    merchant_id = find_merchant_ids_for(customer_id).group_by { |merchant| merchant }
-                                                    .max_by { |k, v| v.count }
-                                                    .first
+    merchant_id = find_merchant_ids_for(customer_id)
+    .group_by { |merchant| merchant }
+    .max_by { |k, v| v.count }.first
     merchant_repository.find_by_id(merchant_id)
   end
 
