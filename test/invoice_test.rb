@@ -2,6 +2,8 @@ gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'date'
+require 'simplecov'
+SimpleCov.start
 require_relative '../lib/invoice'
 
 

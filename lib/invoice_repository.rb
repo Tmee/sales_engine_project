@@ -122,4 +122,9 @@ class InvoiceRepository
     find_all_by(:updated_at, match)
   end
 
+ # create new invoices
+
+  def create
+  end
+
 end

@@ -3,6 +3,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'date'
 require 'bigdecimal'
+require 'simplecov'
+SimpleCov.start
 require_relative '../lib/invoice_item'
 
 
