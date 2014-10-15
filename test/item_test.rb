@@ -19,6 +19,7 @@ class ItemTest < Minitest::Test
               updated_at: '2012-03-27 14:53:59 UTC' }
     @repository = Minitest::Mock.new
     @item       = Item.new(data, repository)
+
   end
 
   def test_it_exists
@@ -42,14 +43,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_finds_the_best_day
-    #item = item
-    repository.expect(:best_day, [], [1])
-    best = [
-          date1 = Date.new(2012, 3, 18),
-          date2 = Date.new(2012, 3, 10),
-          date3 = Date.new(2012, 3, 24)
-          ]
-    assert_equal date3, item.best_day
+    date = Date.parse("2012-03-27")
+    assert_equal date, item.best_day
   end
-
 end
