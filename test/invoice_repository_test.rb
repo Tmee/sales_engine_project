@@ -35,18 +35,18 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_invoice_item_by_id
-    invoice = invoice_repo.find_by_id("3")
+    invoice = invoice_repo.find_by_id(3)
     assert_equal 78, invoice.merchant_id
   end
 
   def test_it_does_not_find_nonexistant_invoice_item
-    invoice = invoice_repo.find_by_id("0")
+    invoice = invoice_repo.find_by_id(0)
     assert_equal nil, invoice
   end
 
   def test_it_returns_one_invoice_by_customer_id
-    invoice = invoice_repo.find_by_customer_id("3")
-    assert_equal "86", invoice.merchant_id
+    invoice = invoice_repo.find_by_customer_id(3)
+    assert_equal 86, invoice.merchant_id
   end
 
   # def test_return_random
