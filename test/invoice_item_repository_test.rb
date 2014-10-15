@@ -55,8 +55,4 @@ class InvoiceItemRepositoryTest < Minitest::Test
     invoice_item = invoice_item_repo.find_by_item_id(1849)
     assert_equal 2, invoice_item.invoice_id
   end
-<<<<<<< HEAD
-=======
-
->>>>>>> a1174f0ae88f8a67d8961199ff8dc78ff6497ac6
 end
