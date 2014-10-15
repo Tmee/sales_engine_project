@@ -1,4 +1,3 @@
-require 'pry'
 require 'csv'
 require_relative 'invoice_item'
 
@@ -30,12 +29,6 @@ class InvoiceItemRepository
   def random
     @all.sample
   end
-
-  #the following code will be called from the engine when asked
-
-  # def find_invoice_items_by_id(id)
-  #   engine.find_invoice_items_by_id(id)
-  # end
 
   #the following two methods allow
   # invoice_item_repository to talk to sales engine

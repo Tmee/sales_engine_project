@@ -1,3 +1,5 @@
+require 'bigdecimal'
+
 class InvoiceItem
   attr_reader :id,
               :item_id,

@@ -1,3 +1,8 @@
+require 'simplecov'
+SimpleCov.start do
+  add_fiter '/test/'
+end
+
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -48,10 +53,4 @@ class InvoiceItemRepositoryTest < Minitest::Test
     invoice_item = invoice_item_repo.find_by_item_id("1849")
     assert_equal "2", invoice_item.invoice_id
   end
-
-  # def test_return_random
-  #   skip
-  #   assert
-  # end
-
 end

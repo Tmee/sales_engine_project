@@ -1,4 +1,3 @@
-require 'pry'
 require 'csv'
 require_relative 'invoice'
 
@@ -31,14 +30,12 @@ class InvoiceRepository
     @all.sample
   end
 
-  #the following code will be called from the engine when asked
+  #the following methods allow invoice_repository to talk to sales engine
+  #they are called in invoice.rb (one step down on tree)
 
   def find_invoice_by_invoice_id(id)
     engine.find_invoice_by_invoice_id(id)
   end
-
-  #the following five methods allow invoice_repository to talk to sales engine
-  #they are called in invoice.rb (one step down on tree)
 
   def find_transactions_by_invoice_id(id)
     engine.find_transactions_by_invoice_id(id)

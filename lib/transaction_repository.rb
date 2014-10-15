@@ -1,4 +1,3 @@
-require 'pry'
 require 'csv'
 require_relative 'transaction'
 
@@ -34,7 +33,6 @@ class TransactionRepository
   #the following code will be called from the engine when asked
 
   def find_results_by_invoice_id(invoice_id)
-  #from transactions, return only invoice ids where result == success
     invoices = find_all_by_invoice_id(invoice_id)
     successful_invoices = invoices.select { |i| i.result == "success" }
   end
