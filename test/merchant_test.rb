@@ -33,9 +33,5 @@ class MerchantTest < Minitest::Test
     assert_equal Date.parse("2012-03-27 14:53:59 UTC"), merchant.updated_at
   end
 
-  def test_it_delegates_items_to_repository
-    repository.expect(:find_items_by_id, [], ["1"])
-    merchant.items
-    repository.verify
-  end
+
 end

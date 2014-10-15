@@ -32,11 +32,4 @@ class TransactionTest < Minitest::Test
     assert_equal "success", transaction.result
   end
 
-  def test_it_delegates_items_to_repository
-    repository.expect(:find_invoice_by_invoice_id, [], ["1"])
-    transaction.invoice
-    repository.verify
-  end
-
-
 end
