@@ -21,4 +21,12 @@ class Customer
     repository.find_invoices_by_customer_id(id)
   end
 
+  def transactions
+    repository.find_transactions_by_customer_id_via_invoices(id)
+  end
+
+  def favorite_merchant
+    repository.find_merchant_by_customer_id(id)
+  end
+
 end
