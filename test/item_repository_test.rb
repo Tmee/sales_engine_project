@@ -1,8 +1,9 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'simplecov'
+SimpleCov.start
 require_relative '../lib/item_repository'
-
 
 class ItemRepositoryTest < Minitest::Test
   attr_reader :item_repo,

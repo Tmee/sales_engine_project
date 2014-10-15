@@ -1,8 +1,10 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/customer'
 require 'date'
+require 'simplecov'
+SimpleCov.start
+require_relative '../lib/customer'
 
 class CustomerTest < Minitest::Test
   attr_reader :repository,

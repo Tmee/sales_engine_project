@@ -7,6 +7,8 @@ gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'bigdecimal'
+require 'simplecov'
+SimpleCov.start
 require_relative '../lib/invoice_item_repository'
 
 class InvoiceItemRepositoryTest < Minitest::Test
