@@ -24,8 +24,20 @@ class ItemRepositoryTest < Minitest::Test
 
 
   def test_it_delegates_items_to_sales_engine
-    engine.expect(:find_merchant_by_id,[],['1'])
+    engine.expect(:find_by_merchant_id,[],['1'])
     item_repo.find_merchant_by_id('1')
     engine.verify
+  end
+
+  def test_it_finds_the_most_revenue
+
+  end
+
+  def test_it_finds_all_by_unit_price
+    results = item_repo.find_all_by_unit_price(BigDecimal('751.07'))
+    assert_equal results[0].id, 1
+
+    results = item_repo.find_all_by_unit_price(BigDecimal('751.07'))
+    refute_equal results[0].id, 2
   end
 end
