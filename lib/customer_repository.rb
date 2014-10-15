@@ -31,11 +31,19 @@ class CustomerRepository
     @all.sample
   end
 
-  #the following method allows customer_repository to talk to sales engine
-  #it is called in customer.rb (one step down on tree)
+  #the following methods allow customer_repository to talk to sales engine
+  #they are called in customer.rb (one step down on tree)
 
   def find_invoices_by_customer_id(id)
     engine.find_invoices_by_customer_id(id)
+  end
+
+  def find_merchant_by_customer_id(id)
+    engine.find_favorite_merchant(id)
+  end
+
+  def find_transactions_by_customer_id_via_invoices(id)
+    engine.find_transactions_by_customer_id_via_invoices(id)
   end
 
   #find_by

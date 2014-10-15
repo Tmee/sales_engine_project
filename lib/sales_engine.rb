@@ -78,4 +78,23 @@ class SalesEngine
   def find_transactions_by_invoice_id(invoice_id)
     transaction_repository.find_all_by_invoice_id(invoice_id)
   end
+
+  def find_transactions_by_customer_id_via_invoices(customer_id)
+    invoices = invoice_repository.find_all_by_customer_id(customer_id)
+    invoices.map { |i| transaction_repository.find_by_invoice_id(i.id) }
+  end
+
+  def find_merchant_ids_for(customer_id)
+    invoice_repository.find_all_by_customer_id(customer_id)
+                      .select(&:successful_transaction?)
+                      .collect(&:merchant_id)
+  end
+
+  def find_favorite_merchant(customer_id)
+    merchant_id = find_merchant_ids_for(customer_id).group_by { |merchant| merchant }
+                                                    .max_by { |k, v| v.count }
+                                                    .first
+    merchant_repository.find_by_id(merchant_id)
+  end
+
 end
