@@ -39,7 +39,8 @@ class TransactionRepository
     successful_invoices = invoices.select { |i| i.result == "success" }
   end
 
-  #the following two methods allow transaction_repository to talk to sales engine
+  #the following two methods allow
+  # transaction_repository to talk to sales engine
   #they are called in transaction.rb (one step down on tree)
 
   def find_invoice_by_invoice_id(invoice_id)

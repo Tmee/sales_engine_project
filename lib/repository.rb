@@ -1,21 +1,21 @@
 
-module Repository
+# module Repository
 
-  def all(filename)
-    @all ||= data_builder
-  end
+#   def all(filename)
+#     @all ||= data_builder
+#   end
 
-  def random
-    @all.sample
+#   def random
+#     @all.sample
 
-  end
+#   end
 
-  def find_by_x(match)
+#   def find_by_x(match)
 
-  end
+#   end
 
-  def find_all_by_x(match)
+#   def find_all_by_x(match)
 
-  end
+#   end
 
-end
+# end

@@ -40,13 +40,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_finds_the_best_day
-    item = item
-    best = [
-          date1 = Date.new(2012, 3, 18),
-          date2 = Date.new(2012, 3, 10),
-          date3 = Date.new(2012, 3, 24)
-          ]
-    assert_equal date3, item.best_day
+    assert_equal Date.parse('2012-03-27 14:53:59 UTC'), item.best_day
   end
 
 end
