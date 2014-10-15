@@ -26,6 +26,18 @@ class Item
     repository.find_invoice_items_by_id(id)
   end
 
+  def paid_invoice_items
+    @paid_invoice_items ||= invoice_items.select { |i| i.invoice.successful? }
+  end
+
+  def revenue
+    paid_invoice_items.inject(0) { |sum, i| sum += (i.unit_price * i.quantity) }
+  end
+
+  def total_items
+    paid_invoice_items.inject(0) { |sum, i| sum += i.quantity}
+  end
+
   def merchant
     repository.find_merchant_by_merchant_id(merchant_id)
   end

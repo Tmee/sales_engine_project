@@ -31,6 +31,14 @@ class ItemRepository
     @all.sample
   end
 
+  def most_revenue(x)
+    all.sort_by { |i| i.revenue }.reverse[0..x-1]
+  end
+
+  def most_items(x=1)
+    all.sort_by { |i| i.total_items }.reverse[0..x-1]
+  end
+
   #the following two methods allow item_repository to talk to sales engine
   #they are called in item.rb (one step down on tree)
 
