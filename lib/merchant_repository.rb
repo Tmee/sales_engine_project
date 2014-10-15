@@ -31,6 +31,18 @@ class MerchantRepository
     @all.sample
   end
 
+  def revenue(date)
+    all.inject(0) { |sum, merchant| sum += merchant.revenue(date) }
+  end
+
+  def most_revenue(x)
+    all.sort_by { |m| m.revenue}.reverse[0...x]
+  end
+
+  def most_items(x)
+    all.sort_by { |i| i.sold_items}.reverse[0...x]
+  end
+
   #the following code will be called from the engine when asked
 
   # def find_merchant_by_id(id)
@@ -39,6 +51,9 @@ class MerchantRepository
 
   #the following two methods allow merchant_repository to talk to sales engine
   #they are called in merchant.rb (one step down on tree)
+  def find_invoice_items_by_merchant_id(id)
+    engine.find_invoice_items_by_merchant_id(id)
+  end
 
   def find_items_by_id(id)
     engine.find_items_by_merchant_id(id)

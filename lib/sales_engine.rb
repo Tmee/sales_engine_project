@@ -27,7 +27,8 @@ class SalesEngine
   end
 
   def find_invoice_items_by_id(invoice_id)
-    invoice_item_repository.find_all_by_invoice_id(invoice_id)
+    invoice_item_repository.find_all_by_invoice_id(
+      invoice_id)
   end
 
   def find_invoice_items_by_item_id(item_id)

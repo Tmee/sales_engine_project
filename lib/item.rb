@@ -48,7 +48,7 @@ class Item
     end
     daily_invoice_items.values.flatten!
     daily_item_totals = total_items_by_date(daily_invoice_items)
-    daily_item_totals.max_by { |k, v| v }[0]
+    daily_item_totals.max_by { |key, value| value }[0]
   end
 
   def total_items_by_date(invoice_items)

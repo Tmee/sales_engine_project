@@ -47,4 +47,10 @@ class Invoice
      transactions.any? {|t| t.result == 'success'}
   end
 
+  def amount
+    invoice_items.inject(0) do |result, invoice_item|
+      result + (BigDecimal(invoice_item.quantity) * invoice_item.unit_price)
+    end
+  end
+
 end
