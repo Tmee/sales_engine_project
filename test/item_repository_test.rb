@@ -22,13 +22,6 @@ class ItemRepositoryTest < Minitest::Test
     assert item_repo.engine
   end
 
-
-  def test_it_delegates_items_to_sales_engine
-    engine.expect(:find_by_merchant_id, [], ['1'])
-    item_repo.find_by_merchant_id('1')
-    engine.verify
-  end
-
   def test_it_finds_the_most_revenue
   end
 

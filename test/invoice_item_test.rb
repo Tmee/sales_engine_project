@@ -16,8 +16,8 @@ class InvoiceItemTest < Minitest::Test
                    invoice_id: "1".to_i,
                    quantity: "5".to_i,
                    unit_price: BigDecimal.new("13635")/ BigDecimal(100),
-                   created_at: "2012-03-27 14:53:00 UTC",
-                   updated_at: "2012-03-27 14:53:59 UTC" }
+                   created_at: Date.parse("2012-03-27 14:53:00 UTC"),
+                   updated_at: Date.parse("2012-03-27 14:53:59 UTC") }
     @repository = Minitest::Mock.new
     @invoice_item   = InvoiceItem.new(attribute, repository)
   end
