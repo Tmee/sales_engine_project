@@ -31,12 +31,12 @@ class InvoiceRepositoryTest < Minitest::Test
     assert invoice_repo.all
     invoice = invoice_repo.all.first
     assert_equal "shipped", invoice.status
-    assert_equal  '1', invoice.id
+    assert_equal  1, invoice.id
   end
 
   def test_it_returns_invoice_item_by_id
     invoice = invoice_repo.find_by_id("3")
-    assert_equal "78", invoice.merchant_id
+    assert_equal 78, invoice.merchant_id
   end
 
   def test_it_does_not_find_nonexistant_invoice_item

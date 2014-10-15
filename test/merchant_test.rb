@@ -1,6 +1,7 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'date'
 require_relative '../lib/merchant'
 
 
@@ -9,7 +10,7 @@ class MerchantTest < Minitest::Test
               :repository
 
   def setup
-    attribute  = { id: "1",
+    attribute  = { id: "1".to_i,
                    name: "Example",
                    created_at: "2012-03-27 14:53:00 UTC",
                    updated_at: "2012-03-27 14:53:59 UTC" }
@@ -26,10 +27,10 @@ class MerchantTest < Minitest::Test
   end
 
   def test_it_assigns_correct_attributes
-    assert_equal "1", merchant.id
+    assert_equal 1, merchant.id
     assert_equal "Example", merchant.name
-    assert_equal "2012-03-27 14:53:00 UTC", merchant.created_at
-    assert_equal "2012-03-27 14:53:59 UTC", merchant.updated_at
+    assert_equal Date.parse("2012-03-27 14:53:00 UTC"), merchant.created_at
+    assert_equal Date.parse("2012-03-27 14:53:59 UTC"), merchant.updated_at
   end
 
   def test_it_delegates_items_to_repository

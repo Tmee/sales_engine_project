@@ -1,8 +1,10 @@
 # Sales Engine
 
-(insert project completion goals for first check-in here)
+First check in goals: process assignment, set up repositories/do initial build for all six csv files.
+(STATUS: ALL MET)
 
-(insert project completion goals for second check-in here)
+Second check in goals: general progress and awesomeness.
+(STATUS: SURE)
 
 # Check-in Rubrics
 

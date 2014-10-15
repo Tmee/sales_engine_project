@@ -31,12 +31,12 @@ class MerchantRepositoryTest < Minitest::Test
     assert merchant_repo.all
     merchant = merchant_repo.all.first
     assert_equal "Schroeder-Jerde", merchant.name
-    assert_equal  '1', merchant.id
+    assert_equal  1, merchant.id
   end
 
   def test_it_returns_one_merchant_by_name
     merchant = merchant_repo.find_by_name("Bernhard-Johns")
-    assert_equal "7", merchant.id
+    assert_equal 7, merchant.id
   end
 
   def test_it_does_not_find_nonexistant_merchant
@@ -45,13 +45,8 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_merchant_by_id
-    merchant = merchant_repo.find_by_id("1")
+    merchant = merchant_repo.find_by_id(1)
     assert_equal "Schroeder-Jerde", merchant.name
   end
-
-  # def test_return_random
-  #   skip
-  #   assert
-  # end
 
 end
