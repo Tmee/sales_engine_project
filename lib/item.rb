@@ -41,4 +41,22 @@ class Item
   def merchant
     repository.find_merchant_by_merchant_id(merchant_id)
   end
+
+  def best_day
+    daily_invoice_items = paid_invoice_items.group_by do |invoice_item|
+      invoice_item.invoice.updated_at
+    end
+    binding.pry
+    daily_invoice_items.values.flatten!
+    daily_item_totals = total_items_by_date(daily_invoice_items)
+    daily_item_totals.max_by { |k, v| v }[0]
+  end
+
+  def total_items_by_date(invoice_items)
+    invoice_items.each do |key, value|
+      invoice_items[key] = value.inject(0) do |sum, invoice_item|
+        sum + invoice_item.quantity
+      end
+    end
+  end
 end
