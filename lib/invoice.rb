@@ -28,7 +28,7 @@ class Invoice
   end
 
   def items
- repository.find_items_by_id_within_invoice_items(id)
+    repository.find_items_by_id_within_invoice_items(id)
   end
 
   def customer
@@ -41,6 +41,10 @@ class Invoice
 
   def successful_transaction?
     transactions.any? { |t| t.result == "success" }
+  end
+
+  def successful?
+     transactions.any? {|t| t.result == 'success'}
   end
 
 end
