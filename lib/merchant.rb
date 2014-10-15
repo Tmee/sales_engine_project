@@ -52,4 +52,19 @@ class Merchant
   def sold_items
     paid_invoice_items.inject(0) { |sum, item| sum += item.quantity }
   end
+
+  def customers
+    paid_invoices.map { |invoice| invoice.customer }
+  end
+
+  def favorite_customer
+    customers.group_by { |item| item }.values.max_by(&:size).first
+  end
+
+  def customers_with_pending_invoices
+    invoices.reject { |i| i.successful? }.map do |invoice|
+      repository.find_all_by_customer_id(invoice.customer_id)
+    end.flatten
+  end
 end
+

@@ -21,6 +21,9 @@ class SalesEngine
     @customer_repository     = CustomerRepository.new(self, './csvs/customers.csv')
     @transaction_repository  = TransactionRepository.new(self, './csvs/transactions.csv')
   end
+  def find_all_by_customer_id(customer_id)
+    customer_repository.find_all_by_id(customer_id)
+  end
 
   def find_items_by_merchant_id(merchant_id)
     item_repository.find_all_by_merchant_id(merchant_id)

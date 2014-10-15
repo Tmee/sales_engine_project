@@ -51,6 +51,11 @@ class MerchantRepository
 
   #the following two methods allow merchant_repository to talk to sales engine
   #they are called in merchant.rb (one step down on tree)
+
+  def find_all_by_customer_id(customer_id)
+    engine.find_all_by_customer_id(customer_id)
+  end
+
   def find_invoice_items_by_merchant_id(id)
     engine.find_invoice_items_by_merchant_id(id)
   end
