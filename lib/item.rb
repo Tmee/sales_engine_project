@@ -46,7 +46,6 @@ class Item
     daily_invoice_items = paid_invoice_items.group_by do |invoice_item|
       invoice_item.invoice.updated_at
     end
-    binding.pry
     daily_invoice_items.values.flatten!
     daily_item_totals = total_items_by_date(daily_invoice_items)
     daily_item_totals.max_by { |k, v| v }[0]
