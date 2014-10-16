@@ -30,7 +30,7 @@ class Merchant
   end
 
   def paid_invoices
-    invoices.select do |invoice|
+    invoices.select do   |invoice|
       invoice.transactions.any? { |t| t.result == 'success' }
     end
   end

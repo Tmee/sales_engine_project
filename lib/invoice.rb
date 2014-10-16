@@ -52,4 +52,9 @@ class Invoice
       result + (BigDecimal(invoice_item.quantity) * invoice_item.unit_price)
     end
   end
+
+  def charge(transaction_data)
+    transaction_data[:invoice_id] = id
+    repository.create_transaction(transaction_data)
+  end
 end

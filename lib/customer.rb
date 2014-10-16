@@ -1,5 +1,5 @@
-require 'pry'
 require 'date'
+
 class Customer
   attr_reader :repository,
               :id,

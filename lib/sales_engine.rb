@@ -7,19 +7,13 @@ class SalesEngine
               :invoice_item_repository,
               :customer_repository,
               :transaction_repository,
-              :d,
-              :m,
-              :ix,
-              :it,
-              :ii,
-              :c,
-              :t
+              :d,:m,:iv,:it,:ii,:c,:t
 
 
   def initialize(data = "./csvs")
     @d  = data
     @m  = "merchants"
-    @ix = "invoices"
+    @iv = "invoices"
     @it = "items"
     @ii = "invoice_items"
     @c  = "customers"
@@ -28,17 +22,21 @@ class SalesEngine
 
   def startup
     @merchant_repository     = MerchantRepository.new(self, "#{d}/#{m}.csv")
-
-    @invoice_repository      = InvoiceRepository.new(self, "#{d}/#{ix}.csv")
-
+    @invoice_repository      = InvoiceRepository.new(self, "#{d}/#{iv}.csv")
     @item_repository         = ItemRepository.new(self, "#{d}/#{it}.csv")
-
     @invoice_item_repository = InvoiceItemRepository.new(self, "#{d}/#{ii}.csv")
-
     @customer_repository     = CustomerRepository.new(self, "#{d}/#{c}.csv")
-
     @transaction_repository  = TransactionRepository.new(self, "#{d}/#{t}.csv")
   end
+
+  def create_transaction(data)
+    transaction_repository.create_transaction(data)
+  end
+
+  def create_items(items, id, time)
+    invoice_item_repository.create_items(items, id, time)
+  end
+
   def find_all_by_customer_id(customer_id)
     customer_repository.find_all_by_id(customer_id)
   end
@@ -71,6 +69,10 @@ class SalesEngine
   def find_invoices_by_merchant_id(id)
     invoice_repository.find_all_by_merchant_id(id)
   end
+
+    # def find_invoice_by_invoice_id(id)
+    #   invoice_repository.find_by_id(id)
+    # end
 
   def find_by_item_id(id)
     item_repository.find_by_id(id)

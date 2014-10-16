@@ -1,4 +1,3 @@
-require 'pry'
 require 'csv'
 require_relative 'invoice_item'
 
@@ -31,6 +30,25 @@ class InvoiceItemRepository
     @all.sample
   end
 
+<<<<<<< HEAD
+=======
+   def create_items(items, invoice_id, time)
+    items.each do |item|
+      new_invoice_item = {}
+
+      new_invoice_item[:id]         = all.length + 1
+      new_invoice_item[:item_id]    = item.id
+      new_invoice_item[:invoice_id] = invoice_id
+      new_invoice_item[:quantity]   = items.count(item)
+      new_invoice_item[:unit_price] = item.unit_price
+      new_invoice_item[:created_at] = time
+      new_invoice_item[:updated_at] = time
+
+      @all << InvoiceItem.new(new_invoice_item, engine)
+    end
+  end
+
+>>>>>>> 907099420ef22d63bb639b0f9efe60520c20b736
   #the following two methods allow
   # invoice_item_repository to talk to sales engine
   #they are called in invoice_item.rb (one step down on tree)
