@@ -1,6 +1,7 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'date'
 require 'simplecov'
 SimpleCov.start
 require_relative '../lib/transaction'
@@ -14,7 +15,9 @@ class TransactionTest < Minitest::Test
     attribute  = { id: "1".to_i,
                    invoice_id: "1".to_i,
                    credit_card_number: "4654405418249632".to_i,
-                   result: "success" }
+                   result: "success",
+                   created_at: '2012-03-27 14:54:09 UTC',
+                   updated_at: '2012-03-27 14:54:09 UTC' }
     @repository    = Minitest::Mock.new
     @transaction   = Transaction.new(attribute, repository)
   end
