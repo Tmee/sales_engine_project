@@ -30,8 +30,6 @@ class InvoiceItemRepository
     @all.sample
   end
 
-<<<<<<< HEAD
-=======
    def create_items(items, invoice_id, time)
     items.each do |item|
       new_invoice_item = {}
@@ -48,7 +46,6 @@ class InvoiceItemRepository
     end
   end
 
->>>>>>> 907099420ef22d63bb639b0f9efe60520c20b736
   #the following two methods allow
   # invoice_item_repository to talk to sales engine
   #they are called in invoice_item.rb (one step down on tree)
