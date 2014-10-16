@@ -32,6 +32,22 @@ class TransactionRepository
 
   #the following code will be called from the engine when asked
 
+  def create_transaction(data)
+    t = {}
+
+    t[:id]                          = all.length + 1
+    t[:credit_card_number]          = data[:credit_card_number]
+    t[:credit_card_expiration_date] = data[:credit_card_expiration_date]
+    t[:result]                      = data[:result]
+    t[:created_at]                  = Time.new.to_s
+    t[:updated_at]                  = Time.new.to_s
+
+   new_transaction = Transaction.new(t, self)
+   @all << new_transaction
+   new_transaction
+
+  end
+
   def find_results_by_invoice_id(invoice_id)
     invoices = find_all_by_invoice_id(invoice_id)
     successful_invoices = invoices.select { |i| i.result == "success" }

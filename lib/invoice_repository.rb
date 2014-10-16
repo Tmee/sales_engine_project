@@ -1,4 +1,5 @@
 require 'csv'
+require 'time'
 require_relative 'invoice'
 
 class InvoiceRepository
@@ -30,8 +31,38 @@ class InvoiceRepository
     @all.sample
   end
 
+  def create(new_invoice_data)
+    new_invoice = {}
+
+    new_invoice[:id]          = all.length + 1
+    new_invoice[:customer_id] = new_invoice_data[:customer].id
+    new_invoice[:merchant_id] = new_invoice_data[:merchant].id
+    new_invoice[:status]      = new_invoice_data[:status]
+    new_invoice[:created_at]  = Time.new.to_s
+    new_invoice[:updated_at]  = Time.new.to_s
+
+    new_invoice_item(
+      new_invoice_data[:items],
+      new_invoice[:id],
+      new_invoice[:created_at]
+    )
+
+    invoice = Invoice.new(new_invoice, self)
+    @all << invoice
+    invoice
+  end
+
+  def new_invoice_item(items, id, time)
+    engine.create_items(items, id, time)
+  end
+
+
   #the following methods allow invoice_repository to talk to sales engine
   #they are called in invoice.rb (one step down on tree)
+
+  def create_transaction(transaction_data)
+    engine.create_transaction(transaction_data)
+  end
 
   def find_invoice_by_invoice_id(id)
     engine.find_invoice_by_invoice_id(id)
@@ -118,10 +149,4 @@ class InvoiceRepository
   def find_all_by_updated_at(updated_at)
     find_all_by(:updated_at, match)
   end
-
- # create new invoices
-
-  def create
-  end
-
 end
