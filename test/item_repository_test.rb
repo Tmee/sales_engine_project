@@ -23,9 +23,6 @@ class ItemRepositoryTest < Minitest::Test
     assert item_repo.engine
   end
 
-  def test_it_finds_the_most_revenue
-  end
-
   def test_it_finds_all_by_unit_price
     results = item_repo.find_all_by_unit_price(BigDecimal('751.07'))
     assert_equal results[0].id, 1

@@ -45,4 +45,18 @@ class CustomerRepositoryTest < Minitest::Test
     assert_equal nil, customer
   end
 
+  def test_find_by_id
+    customer = customer_repo.find_by_id(2)
+    assert_equal "Osinski", customer.last_name
+  end
+
+  def test_find_by_last_name
+    customer = customer_repo.find_by_last_name("Fadel")
+    assert_equal 9, customer.id
+  end
+
+  def test_find_by_created_at
+    customer = customer_repo.find_by_created_at(Date.parse("2012-03-27 14:54:12 UTC"))
+    assert_equal "Joey", customer.first_name
+  end
 end

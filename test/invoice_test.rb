@@ -43,5 +43,10 @@ class InvoiceTest < Minitest::Test
     repository.verify
   end
 
+  def test_it_can_find_transactions_by_invoice_id
+    repository.expect(:find_transactions_by_invoice_id, [1].first, [1])
+    assert_equal 1, invoice.transactions
+  end
+
 
 end

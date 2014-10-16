@@ -45,4 +45,8 @@ class InvoiceItemTest < Minitest::Test
     repository.verify
   end
 
+  def test_it_can_find_an_invoice
+    repository.expect(:find_invoice_by_invoice_id, [], [1])
+    invoice_item.invoice
+  end
 end

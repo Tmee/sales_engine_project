@@ -50,7 +50,7 @@ class ItemTest < Minitest::Test
           date2 = Date.new(2012, 3, 10),
           date3 = Date.new(2012, 3, 24)
           ]
-    assert_equal date3, item.best_day
+    assert_equal Date.parse(date3), item.best_day
   end
 
 end

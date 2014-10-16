@@ -23,11 +23,10 @@ class InvoiceItemRepositoryTest < Minitest::Test
     assert invoice_item_repo.engine
   end
 
-  # def test_it_delegates_items_to_sales_engine
-  #   engine.expect(:find_item_by_item_id,[],['1'])
-  #   invoice_item_repo.find_by_item_id('1')
-  #   engine.verify
-  # end
+  def test_it_delegates_items_to_sales_engine
+    engine.expect(:find_item_by_item_id,[],['1'])
+    invoice_item_repo.find_by_item_id('1')
+  end
 
   def test_return_all
     assert invoice_item_repo.all
@@ -49,6 +48,11 @@ class InvoiceItemRepositoryTest < Minitest::Test
   def test_it_returns_one_invoice_item_by_item_id
     invoice_item = invoice_item_repo.find_by_item_id(1849)
     assert_equal 2, invoice_item.invoice_id
+  end
+
+  def test_it_can_find_by_quantity
+    invoice_item = invoice_item_repo.find_by_quantity(4)
+    assert_equal 1, invoice_item.invoice_id
   end
 
 end
