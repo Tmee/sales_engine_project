@@ -1,8 +1,8 @@
+# require 'simplecov'
+# SimpleCov.start
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'simplecov'
-  SimpleCov.start
 require_relative '../lib/customer_repository'
 
 class CustomerRepositoryTest < Minitest::Test

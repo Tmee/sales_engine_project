@@ -2,8 +2,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'bigdecimal'
 require 'date'
-require 'simplecov'
-SimpleCov.start
+# require 'simplecov'
+# SimpleCov.start
 require_relative '../lib/item'
 
 class ItemTest < Minitest::Test
