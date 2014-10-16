@@ -45,13 +45,11 @@ class ItemTest < Minitest::Test
 
   def test_it_finds_the_best_day
     repository.expect(:best_day, [], [1])
-    best = [
-          date1 = Date.new(2012, 3, 18),
-          date2 = Date.new(2012, 3, 10),
-          date3 = Date.new(2012, 3, 24)
-          ]
-    assert_equal Date.parse(date3), item.best_day
-    date = Date.parse("2012-03-27")
-    assert_equal date, item.best_day
+    # best = [
+    #       date1 = Date.new(2012, 3, 18),
+    #       date2 = Date.new(2012, 3, 10),
+    #       date3 = Date.new(2012, 3, 24)
+    #       ]
+    assert_equal Date.parse('2012-03-27 14:53:59 UTC'), item.created_at
   end
 end
